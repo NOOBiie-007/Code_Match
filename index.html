@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="randominput" class="form-control" type="text">
+                    <button id="generatebtn" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input id="numberinput" class="form-control" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div id="seven" class="button">7</div>
+                              <div id="eight" class="button">8</div>
+                              <div id="nine" class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="four" class="button">4</div>
+                              <div id="five" class="button">5</div>
+                              <div id="six" class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="one" class="button">1</div>
+                              <div id="two" class="button">2</div>
+                              <div id="three" class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="button">&lt;</div>
+                                <div id="zero" class="button">0</div>
+                                <div id="clear" class="button">C</div>
+                            </div>
+                            <div>
+                                <button id="sub" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left"><span id="try_number">3</span> try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p id="false" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="true" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+    <script>
+        // Random Generate number event handler-----Start
+        const gbtn = document.getElementById('generatebtn');
+        gbtn.addEventListener('click',function(){
+           random_generate();
+        })
+        function random_generate(){
+            const random = document.getElementById('randominput');
+            var number = Math.floor(1000 + Math.random() * 9000);
+            random.value =number; 
+        }
+        //Random Generate number event handler-----End
+
+        var string ="";
+        // For 7
+        const svn = document.getElementById('seven');
+        svn.addEventListener('click',function(){
+            final_string(7);     
+        })
+        // For 8
+        const egt = document.getElementById('eight');
+        egt.addEventListener('click',function(){
+            final_string(8);
+        })
+        // For 9
+        const nin = document.getElementById('nine');
+        nin.addEventListener('click',function(){
+            final_string(9);
+        })
+        // For 4
+        const fur = document.getElementById('four');
+        fur.addEventListener('click',function(){
+            final_string(4);
+        })
+        // For 5
+        const fiv = document.getElementById('five');
+        fiv.addEventListener('click',function(){
+            final_string(5);
+        })
+        // For 6
+        const sx = document.getElementById('six');
+        sx.addEventListener('click',function(){
+            final_string(6);
+        })
+        // For 1
+        const on = document.getElementById('one');
+        on.addEventListener('click',function(){
+            final_string(1);
+        })
+        // For 2
+        const tw = document.getElementById('two');
+        tw.addEventListener('click',function(){
+            final_string(2);
+        })
+        // For 3
+        const thre = document.getElementById('three');
+        thre.addEventListener('click',function(){
+            final_string(3);
+        })
+        // For 0
+        const zro = document.getElementById('zero');
+        zro.addEventListener('click',function(){
+            final_string(0);
+        })
+        // For clear
+        const clr = document.getElementById('clear');
+        clr.addEventListener('click',function(){
+            string="";
+            document.getElementById('numberinput').value = string;
+        })
+        // function for input number
+        function final_string(num){
+            string=string+num;
+            document.getElementById('numberinput').value = string;
+        }
+
+        // Submit button handler
+        
+        const submt = document.getElementById('sub');
+        submt.addEventListener('click',function(){
+            var t=document.getElementById('try_number').innerText;
+            t=t-1;
+            document.getElementById('try_number').innerText=t;
+            if(t==0){
+                console.log("nikal launde")
+                alert("Thank you,Now you can leave")
+            }
+
+
+            var n = document.getElementById('randominput').value;
+            var m=parseInt(string);
+            if(n==m){
+                document.getElementById('numberinput').value ="";
+                document.getElementById('randominput').value="";
+                document.getElementById('true').style.display = 'block';
+                document.getElementById('false').style.display = 'none'; 
+            }
+            else{
+                document.getElementById('false').style.display = 'block';
+                document.getElementById('true').style.display = 'none';
+            }
+            string="";
+        })
+
+
+
+    </script>
+</body>
+</html>
