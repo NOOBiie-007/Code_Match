@@ -93,6 +93,7 @@
             document.getElementById('try_number').innerText=t;
             if(t==0){
                 alert("Thank you,Now you can leave")
+                window.location.reload();
             }
                 document.getElementById('false').style.display = 'block';
                 document.getElementById('true').style.display = 'none';
