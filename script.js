@@ -84,7 +84,8 @@
                 document.getElementById('numberinput').value ="";
                 document.getElementById('randominput').value="";
                 document.getElementById('true').style.display = 'block';
-                document.getElementById('false').style.display = 'none'; 
+                document.getElementById('false').style.display = 'none';
+                document.getElementById('try_number').innerText=3; 
             }
             else{
                 var t=document.getElementById('try_number').innerText;
