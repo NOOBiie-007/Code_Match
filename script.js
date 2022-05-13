@@ -12,6 +12,7 @@
         //Random Generate number event handler-----End
 
         var string ="";
+        var str ="";
         // For 7
         const svn = document.getElementById('seven');
         svn.addEventListener('click',function(){
@@ -99,4 +100,19 @@
                 document.getElementById('true').style.display = 'none';
             }
             string="";
+        })
+
+        // Backspace button handle
+        const dlt = document.getElementById('delete');
+        dlt.addEventListener('click',function(){
+            var wrd = document.getElementById('numberinput').value;
+            console.log(wrd);
+            for(let i=0;i<wrd.length-1;i++){
+                str=str+wrd[i];
+            }
+            document.getElementById('numberinput').value = str;
+            string=str;
+            str="";
+
+            console.log(string);     
         })
